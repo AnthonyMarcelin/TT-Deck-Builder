@@ -24,7 +24,7 @@ const mainController = {
         return res.status(404).send("La carte que vous cherchez n'existe pas");
       }  
 
-        res.status(200).render('cardPage', {card, title: card.name})
+        res.status(200).render('cardPage', {card, title: card.name});
 
     } catch (error) {
       res.status(500).send(`An error occured with the database :\n${error.message}`);
