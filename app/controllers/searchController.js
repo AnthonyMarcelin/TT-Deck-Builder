@@ -20,6 +20,21 @@ const searchController = {
 
   },
 
+  searchedLevelCard: async (req, res) => {
+
+    try {
+
+      const cardLevel = req.query.level;
+      const level = await dataMapper.getLevelCard(cardLevel);
+
+      res.status(200).render('cardList', {cards: level, title: cardLevel});
+
+    } catch (error) {
+      res.status(500).send(`An error occured with the database :\n${error.message}`);
+    }
+
+  },
+
 };
 
 export default searchController;

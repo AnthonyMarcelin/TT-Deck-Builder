@@ -37,6 +37,18 @@ const dataMapper = {
     }
   },
 
+  getLevelCard: async (lvl) => {
+
+    const sql = {
+      text: `SELECT * FROM card WHERE level = $1;`,
+      values: [lvl],
+    };
+
+    const result = await database.query(sql);
+    return result.rows;
+
+  },
+
 };
 
 
