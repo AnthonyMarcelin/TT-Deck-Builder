@@ -49,6 +49,38 @@ const dataMapper = {
 
   },
 
+  getDirectionValueCard: async (direction, lvl) => {
+    
+    const column = `value_${direction}`;
+
+    const sql = {
+      text: `SELECT * FROM card WHERE card.${column} = $1;`,
+      values: [lvl],
+    };
+    console.log(sql);
+
+    const result = await database.query(sql);
+    
+    return result.rows;
+
+  },
+
+  getNameCard: async (name) => {
+
+    const text = `'%${name}%'`;
+
+    const sql = `SELECT *FROM card WHERE name ILIKE ${text}`;
+   
+    // const sql = {
+    //   text: `SELECT * FROM card WHERE name ILIKE $1`,
+    //   values: [text],
+    // };
+
+    const result = await database.query(sql);
+    
+    return result.rows;
+  },
+
 };
 
 

@@ -35,6 +35,38 @@ const searchController = {
 
   },
 
+  searchedDirectionValueCard: async (req, res) => {
+
+    try {
+
+      const cardDirection = req.query.direction;
+      const cardLevel = req.query.value;
+
+      const directionLevel = await dataMapper.getDirectionValueCard(cardDirection, cardLevel);
+
+      res.status(200).render('cardList', {cards: directionLevel, title: (cardLevel)})
+
+    } catch (error) {
+      res.status(500).send(`An error occured with the database :\n${error.message}`);
+    }
+
+  },
+
+  searchedByNameCard: async (req, res) => {
+
+      try {
+  
+        const cardName = req.query.name;
+        const name = await dataMapper.getNameCard(cardName);
+  
+        res.status(200).render('cardList', {cards: name, title: `Recherche : ${cardName}`});
+  
+      } catch (error) {
+        res.status(500).send(`An error occured with the database :\n${error.message}`);
+      }
+  
+    },
+
 };
 
 export default searchController;
