@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 
-import router from './app/router.js'; 
+import router from './app/routers/router.js'; 
 
 const app = express();
 

@@ -1,4 +1,4 @@
-import database from './database.js'; 
+import database from './database/client.js'; 
 
 const dataMapper = {
   async getAllCards() {
