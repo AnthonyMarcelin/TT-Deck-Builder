@@ -1,5 +1,6 @@
 import dataMapper from "../dataMapper.js";
 import Card from "../models/card.model.js";
+// import {sql} from '@sequelize/core';
 
 const searchController = {
   searchPage(req, res) {
@@ -49,6 +50,8 @@ const searchController = {
     try {
       
       const column = `value_${direction}`; // <= Je sais pas où mettre ça, ca passe nulle part
+
+      const test = {}
       
       const cardDirection = req.query.direction;
       const cardLevel = req.query.value;

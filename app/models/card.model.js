@@ -43,3 +43,7 @@ Card.init(
         tableName: "card",
     },
 );
+
+
+// voir si y'a pas moyen de refacto les value direction pour opti les requêtes.
+// passer la méthode fonctionnelle et changer la méthode dans le router
