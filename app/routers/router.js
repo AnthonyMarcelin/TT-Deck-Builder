@@ -10,7 +10,7 @@ router.get('/card/:id', mainController.getCardSequelize);
 router.get('/search', searchController.searchPage);
 router.get('/search/element', searchController.searchedElementCardSequelize);
 router.get('/search/level', searchController.searchedLevelCardSequelize);
-router.get('/search/values', searchController.searchedDirectionValueCard);
+router.get('/search/values', searchController.searchedDirectionValueCardSequelize);
 router.get('/search/name', searchController.searchedByNameCardSequelize);
 router.get('/deck', deckController.deckPage);
 router.get('/deck/add/:id', deckController.addCardInDeck);

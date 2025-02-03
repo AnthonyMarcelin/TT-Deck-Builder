@@ -35,3 +35,6 @@ Card.init(cardAttributes, {
     sequelize,
     tableName: "card",
 });
+
+
+// PS : ce n'est pas de moi

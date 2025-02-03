@@ -7,6 +7,7 @@ const searchController = {
     res.render('search');
   },
 
+    // ok avec sequelize
   searchedElementCardSequelize: async (req, res) => {
 
     try {
@@ -26,6 +27,7 @@ const searchController = {
 
   },
 
+    // ok avec sequelize
   searchedLevelCardSequelize: async (req, res) => {
     
     try {
@@ -36,7 +38,7 @@ const searchController = {
           level: cardLevel,
         },
       });
-      
+
       res.status(200).render('cardList', {cards: level, title: cardLevel});
       
     } catch (error) {
@@ -46,20 +48,21 @@ const searchController = {
   },
 
   searchedDirectionValueCardSequelize: async (req, res) => {
-    
     try {
-      
-      const column = `value_${direction}`; // <= Je sais pas où mettre ça, ca passe nulle part
 
-      const test = {}
+      const cardDirection = `value_${req.query.direction}`;
+      console.log(cardDirection);
       
-      const cardDirection = req.query.direction;
       const cardLevel = req.query.value;
       
+      // effectivement, il la reconnait. Mais toujours une erreur dans le navigateur localhost
+      // C'est quoi l'erreur ? : An error occured with the database : level is not defined
       const directionLevel = await Card.findAll({
         where: {
-          column: cardDirection,
+          // On mets la constante créée auparavant dans des crochets pour être interprétée par Sequelize 
+          direction: [cardDirection],
           level: cardLevel,
+          
         },
       });
       
@@ -88,6 +91,7 @@ const searchController = {
     
   },
 
+  // ok avec sequelize
   searchedByNameCardSequelize: async (req, res) => {
     
     try {

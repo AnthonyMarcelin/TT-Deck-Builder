@@ -1,5 +1,5 @@
 import sequelize from "../database/sequelize.js";
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, QueryTypes } from "sequelize";
 
 export default class Card extends Model {}
 
