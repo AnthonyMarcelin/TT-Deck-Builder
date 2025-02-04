@@ -1,6 +1,5 @@
-import dataMapper from "../dataMapper.js";
 import Card from "../models/card.model.js";
-// import {sql} from '@sequelize/core';
+
 
 const searchController = {
   searchPage(req, res) {
@@ -51,7 +50,6 @@ const searchController = {
     try {
 
       const cardDirection = `value_${req.query.direction}`;
-      console.log(cardDirection);
       
       const cardLevel = req.query.value;
       
@@ -60,8 +58,7 @@ const searchController = {
       const directionLevel = await Card.findAll({
         where: {
           // On mets la constante créée auparavant dans des crochets pour être interprétée par Sequelize 
-          direction: [cardDirection],
-          level: cardLevel,
+          [cardDirection]: [cardLevel],
           
         },
       });
@@ -74,23 +71,7 @@ const searchController = {
     
   },
   
-  searchedDirectionValueCard: async (req, res) => {
-    
-    try {
-      
-      const cardDirection = req.query.direction;
-      const cardLevel = req.query.value;
-      
-      const directionLevel = await dataMapper.getDirectionValueCard(cardDirection, cardLevel);
-      
-      res.status(200).render('cardList', {cards: directionLevel, title: (cardLevel)})
-      
-    } catch (error) {
-      res.status(500).send(`An error occured with the database :\n${error.message}`);
-    }
-    
-  },
-
+  
   // ok avec sequelize
   searchedByNameCardSequelize: async (req, res) => {
     
@@ -137,7 +118,7 @@ export default searchController;
       // searchedLevelCard: async (req, res) => {
         
         //   try {
-            
+          
         //     const cardLevel = req.query.level;
         //     const level = await dataMapper.getLevelCard(cardLevel);
         
@@ -152,15 +133,32 @@ export default searchController;
           
           // searchedByNameCard: async (req, res) => {
             
-          //     try {
-                
-          //       const cardName = req.query.name;
-          //       const name = await dataMapper.getNameCard(cardName);
-                
-          //       res.status(200).render('cardList', {cards: name, title: `Recherche : ${cardName}`});
-                
-          //     } catch (error) {
-          //       res.status(500).send(`An error occured with the database :\n${error.message}`);
-          //     }
+            //     try {
               
-          //   },
+            //       const cardName = req.query.name;
+            //       const name = await dataMapper.getNameCard(cardName);
+            
+            //       res.status(200).render('cardList', {cards: name, title: `Recherche : ${cardName}`});
+            
+            //     } catch (error) {
+              //       res.status(500).send(`An error occured with the database :\n${error.message}`);
+              //     }
+              
+              //   },
+
+              // searchedDirectionValueCard: async (req, res) => {
+                
+              //   try {
+                  
+              //     const cardDirection = req.query.direction;
+              //     const cardLevel = req.query.value;
+                  
+              //     const directionLevel = await dataMapper.getDirectionValueCard(cardDirection, cardLevel);
+                  
+              //     res.status(200).render('cardList', {cards: directionLevel, title: (cardLevel)})
+                  
+              //   } catch (error) {
+              //     res.status(500).send(`An error occured with the database :\n${error.message}`);
+              //   }
+                
+              // },
